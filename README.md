@@ -44,13 +44,17 @@
   * cd backend (Enter the backend folder); 
   * npm i (Install dependencies);
   * npm start (Start the backend).
+* Test Backend:
+  * CREATE DATABASE (**name**)_test; 
+  * Run test: npm test.
 
 2 - Frontend
 * Start frontend:
   * cd frontend (Enter the frontend folder); 
   * npm i (Install dependencies);
   * npm start (Start the frontend).
-
+* Test Frontend
+  * Run test: npm test;
 
 <!-- FUTURE WORK -->
 ## Future work
