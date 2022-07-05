@@ -1,10 +1,14 @@
 const app = require("express")();
 const consign = require("consign");
-db = require("./config/db.ts");
 
+const mongoose = require("mongoose");
+app.mongoose = mongoose;
+
+db = require("./config/db.ts");
 app.db = db;
 
 consign()
+  .then("./config/passport.ts")
   .then("./config/middlewares.ts")
   .then("./api/validation.ts")
   .then("./api")

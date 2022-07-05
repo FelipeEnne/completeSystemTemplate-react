@@ -9,7 +9,8 @@
     "dev": "nodemon --ignore __tests__",
     "start": "node index.ts",
     "production": "pm2 start index.ts --name knowledge-backend",
-    "knex-init": "knex init"
+    "knex-init": "knex init",
+    "knex-rollback": "knex migrate:rollback"
   },
   "author": "Felipe Enne",
   "license": "MIT",
@@ -25,6 +26,7 @@
     "jwt-simple": "^0.5.1",
     "knex": "^1.0.1",
     "moment": "^2.22.2",
+    "mongoose": "^5.2.17",
     "node-schedule": "^1.3.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",

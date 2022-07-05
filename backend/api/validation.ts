@@ -6,6 +6,19 @@ module.exports = (app) => {
     return true;
   }
 
+  function notExistsOrError(value, msg) {
+    try {
+      existsOrError(value, msg);
+    } catch (msg) {
+      return;
+    }
+    throw msg;
+  }
+
+  function equalsOrError(valueA, valueB, msg) {
+    if (valueA !== valueB) throw msg;
+  }
+
   function verifyDeliveryDate(value, msg) {
     if (
       !/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)((-(\d{2}):(\d{2})|Z)?)$/.test(
@@ -34,6 +47,8 @@ module.exports = (app) => {
 
   return {
     existsOrError,
+    notExistsOrError,
+    equalsOrError,
     verifyDeliveryDate,
     verifyIfDeliveryDatePast,
     verifyValidCommunicationFormat,
