@@ -1,6 +1,6 @@
-const mongoose_db = require("mongoose");
+let mongoose = require("mongoose");
 
-mongoose_db
+mongoose
   .connect("mongodb://localhost/complete_projects_stats", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -9,3 +9,5 @@ mongoose_db
     const msg = "Erro - MongoDB connection";
     console.log("\x1b[41m%s\x1b[37m", msg, "\x1b[0m");
   });
+
+module.exports = mongoose;
