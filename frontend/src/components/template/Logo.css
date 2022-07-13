@@ -4,6 +4,7 @@ aside.logo {
   align-items: center;
   background-color: #fff;
   box-shadow: var(--shadow);
+  z-index: 20;
 }
 
 aside.logo img {

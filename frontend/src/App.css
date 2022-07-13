@@ -41,6 +41,7 @@ header.header {
 
 aside.menu-area {
   grid-area: menu;
+  z-index: 10;
 }
 
 main.content {

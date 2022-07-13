@@ -1,3 +1,5 @@
+bcrypt = require("bcrypt-nodejs");
+
 module.exports = (app) => {
   const { existsOrError, notExistsOrError, equalOrError } = app.api.validation;
 
