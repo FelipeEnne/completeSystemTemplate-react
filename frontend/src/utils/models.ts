@@ -1,8 +1,15 @@
-export interface User {
+export interface UserInterface {
   name?: string;
   email: string;
   password: string;
   confirmPassword?: string;
+}
+
+export interface StatsInterface {
+  icon: JSX.Element;
+  color: string;
+  title: string;
+  value: number;
 }
 
 export interface HeaderProps {

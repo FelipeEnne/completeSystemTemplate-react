@@ -4,12 +4,12 @@ import axios from "axios";
 import { ToastContainer } from "react-toastify";
 
 import "./Auth.css";
-import { User } from "../../utils/models";
+import { UserInterface } from "../../utils/models";
 import { baseUrl, userKey } from "../../utils/connection";
 import { toastError } from "../../utils/msg";
 import logo from "../../assets/img/logo.jpg";
 
-const initalUserState: User = {
+const initalUserState: UserInterface = {
   email: "",
   password: "",
 };
@@ -18,7 +18,7 @@ const Auth: React.FC<{
   onSetValidatingToken: React.Dispatch<React.SetStateAction<boolean>>;
 }> = ({ onSetValidatingToken }) => {
   const navigate = useNavigate();
-  const [user, setUser] = useState<User>(initalUserState);
+  const [user, setUser] = useState<UserInterface>(initalUserState);
   const [showSignup, setShowSignup] = useState<boolean>(false);
 
   const signin = () => {

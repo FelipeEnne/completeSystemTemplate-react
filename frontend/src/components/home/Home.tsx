@@ -1,16 +1,51 @@
-import React from "react";
-import { FaHome } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import { FaHome, FaFolder, FaFile, FaUser } from "react-icons/fa";
+import axios from "axios";
 
+import { baseUrl } from "../../utils/connection";
 import Main from "../template/Main";
+import Stat from "./Stat";
+import "./Home.css";
 
 const Home: React.FC = () => {
+  const [stat, setStat] = useState<{
+    categories: number;
+    articles: number;
+    users: number;
+  }>({ categories: 0, articles: 0, users: 0 });
+
+  useEffect(() => {
+    getStats();
+  }, []);
+
+  const getStats = () => {
+    axios.get(`${baseUrl}/stats`).then((res) => {
+      setStat(res.data);
+    });
+  };
+
   return (
-    <Main icon={<FaHome />} title="Home" subtitle="Plataforma de comunicação">
-      <div className="display-4">Bem Vindo!</div>
-      <hr />
-      <p className="mb-0">
-        Plataforma em que você pode agendar uma comunicação.
-      </p>
+    <Main icon={<FaHome />} title="Dashboard" subtitle="Compete System">
+      <div className="stats">
+        <Stat
+          title="Categorias"
+          value={stat.categories}
+          icon={<FaFolder />}
+          color="#d54d50"
+        />
+        <Stat
+          title="Artigos"
+          value={stat.articles}
+          icon={<FaFile />}
+          color="#3bc480"
+        />
+        <Stat
+          title="Usuários"
+          value={stat.users}
+          icon={<FaUser />}
+          color="#3282cd"
+        />
+      </div>
     </Main>
   );
 };
