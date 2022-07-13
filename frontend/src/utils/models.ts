@@ -6,6 +6,12 @@ export interface UserInterface {
 }
 
 export interface StatsInterface {
+  categories: number;
+  articles: number;
+  users: number;
+}
+
+export interface StatsComponetInterface {
   icon: JSX.Element;
   color: string;
   title: string;

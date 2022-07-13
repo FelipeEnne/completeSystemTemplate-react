@@ -2,17 +2,18 @@ import React, { useState, useEffect } from "react";
 import { FaHome, FaFolder, FaFile, FaUser } from "react-icons/fa";
 import axios from "axios";
 
+import { StatsInterface } from "../../utils/models";
 import { baseUrl } from "../../utils/connection";
 import Main from "../template/Main";
 import Stat from "./Stat";
 import "./Home.css";
 
 const Home: React.FC = () => {
-  const [stat, setStat] = useState<{
-    categories: number;
-    articles: number;
-    users: number;
-  }>({ categories: 0, articles: 0, users: 0 });
+  const [stat, setStat] = useState<StatsInterface>({
+    categories: 0,
+    articles: 0,
+    users: 0,
+  });
 
   useEffect(() => {
     getStats();

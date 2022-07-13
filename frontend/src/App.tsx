@@ -39,7 +39,11 @@ const App: React.FC = () => {
     const res = await axios.post(`${baseUrl}/validateToken`, userData);
     if (res.data) {
       setValidatingToken(false);
+      axios.defaults.headers.common[
+        "Authorization"
+      ] = `bearer ${userData.token}`;
     } else {
+      delete axios.defaults.headers.common["Authorization"];
       localStorage.removeItem(userKey);
       setValidatingToken(true);
     }

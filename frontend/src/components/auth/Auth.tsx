@@ -11,7 +11,9 @@ import logo from "../../assets/img/logo.jpg";
 
 const initalUserState: UserInterface = {
   email: "",
+  name: "",
   password: "",
+  confirmPassword: "",
 };
 
 const Auth: React.FC<{
@@ -23,7 +25,7 @@ const Auth: React.FC<{
 
   const signin = () => {
     axios
-      .post(`${baseUrl}/signin`, user)
+      .post(`${baseUrl}/signin`, { email: user.email, password: user.password })
       .then((res) => {
         localStorage.setItem(userKey, JSON.stringify(res.data));
         onSetValidatingToken(false);
@@ -34,7 +36,7 @@ const Auth: React.FC<{
 
   const signup = () => {
     axios
-      .post(`${baseUrl}/signup`, { email: user.email, password: user.password })
+      .post(`${baseUrl}/signup`, user)
       .then(() => {
         setUser(initalUserState);
         setShowSignup(false);

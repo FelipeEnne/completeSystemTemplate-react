@@ -49,7 +49,7 @@ module.exports = (app) => {
     } else {
       app
         .db("users")
-        .insert(user)
+        .insert({ ...user, created_at: new Date() })
         .then((_) => res.status(204).send())
         .catch((err) => res.status(500).send(err));
     }
