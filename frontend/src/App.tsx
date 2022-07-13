@@ -20,7 +20,6 @@ import "./App.css";
 const PLRoutes: React.FC = () => {
   return (
     <Routes>
-      <Route path="/auth" element={<Auth />} />
       <Route path="/" element={<Home />} />
       <Route path="/comunications" element={<Communications />} />
       <Route path="/create-comunication" element={<CreateComunication />} />
@@ -37,9 +36,7 @@ const App: React.FC = () => {
     if (!json) return;
 
     const userData = JSON.parse(json);
-
     const res = await axios.post(`${baseUrl}/validateToken`, userData);
-
     if (res.data) {
       setValidatingToken(false);
     } else {
@@ -50,12 +47,12 @@ const App: React.FC = () => {
 
   useEffect(() => {
     validateToken();
-  }, []);
+  }, [validatingToken]);
 
   return (
     <BrowserRouter>
       {validatingToken ? (
-        <Auth />
+        <Auth onSetValidatingToken={setValidatingToken} />
       ) : (
         <div className="app">
           <Logo />

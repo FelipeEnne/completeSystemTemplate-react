@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify";
 import "./Auth.css";
 import { User } from "../../utils/models";
 import { baseUrl, userKey } from "../../utils/connection";
-import { toastSuccess, toastError } from "../../utils/msg";
+import { toastError } from "../../utils/msg";
 import logo from "../../assets/img/logo.jpg";
 
 const initalUserState: User = {
@@ -14,7 +14,9 @@ const initalUserState: User = {
   password: "",
 };
 
-const Auth: React.FC = () => {
+const Auth: React.FC<{
+  onSetValidatingToken: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({ onSetValidatingToken }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState<User>(initalUserState);
   const [showSignup, setShowSignup] = useState<boolean>(false);
@@ -23,8 +25,8 @@ const Auth: React.FC = () => {
     axios
       .post(`${baseUrl}/signin`, user)
       .then((res) => {
-        toastSuccess("signup success");
         localStorage.setItem(userKey, JSON.stringify(res.data));
+        onSetValidatingToken(false);
         navigate("/");
       })
       .catch((e) => toastError(e.response.data));
@@ -34,9 +36,9 @@ const Auth: React.FC = () => {
     axios
       .post(`${baseUrl}/signup`, { email: user.email, password: user.password })
       .then(() => {
-        toastSuccess("signup success");
         setUser(initalUserState);
         setShowSignup(false);
+        onSetValidatingToken(false);
         navigate("/");
       })
       .catch((e) => toastError(e.response.data));
