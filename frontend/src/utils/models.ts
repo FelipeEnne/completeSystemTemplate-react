@@ -18,6 +18,15 @@ export interface StatsComponetInterface {
   value: number;
 }
 
+export interface ArticleInterface {
+  content: string;
+  id: number;
+  name: string;
+  description: string;
+  author: string;
+  imageUrl: string;
+}
+
 export interface HeaderProps {
   icon?: JSX.Element;
   title?: string;
