@@ -22,13 +22,14 @@ const ArticlesByCategory: React.FC<{
     const url = `${baseUrl}/categories/${category.id}`;
     axios(url).then((res) => (category = res.data));
   };
+
   const getArticles = () => {
     const url = `${baseUrl}/categories/${category.id}/articles?page=${page}`;
     axios(url).then((res) => {
       articles = articles.concat(res.data);
       page++;
 
-      if (res.data.length == 0) loadMore = false;
+      if (res.data.length === 0) loadMore = false;
     });
   };
 

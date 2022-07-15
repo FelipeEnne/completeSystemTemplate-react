@@ -10,6 +10,9 @@ const Nav: React.FC = () => {
         <Link to="/" className="text-center">
           <i className="fa fa-home"></i> Home
         </Link>
+        <Link to="/admin" className="text-center">
+          <i className="fa fa-cogs"></i> Admin
+        </Link>
         <Link to="/create-comunication" className="text-center">
           <i className="fa fa-users"></i> Criar comunicação
         </Link>

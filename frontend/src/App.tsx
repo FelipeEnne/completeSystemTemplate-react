@@ -12,6 +12,9 @@ import Nav from "./components/template/Nav";
 
 import Auth from "./components/auth/Auth";
 import Home from "./components/home/Home";
+import Admin from "./components/admin/AdminPages";
+import ArticlesByCategory from "./components/article/ArticlesByCategory";
+import ArticleById from "./components/article/ArticleById";
 import Communications from "./components/communications/Communications";
 import CreateComunication from "./components/communications/CreateComunication";
 
@@ -21,6 +24,9 @@ const PLRoutes: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/admin" element={<Admin />} />
+      {/* <Route path="/categories/:id/article" element={<ArticlesByCategory />} />
+      <Route path="/articles/:id" element={<ArticleById />} /> */}
       <Route path="/comunications" element={<Communications />} />
       <Route path="/create-comunication" element={<CreateComunication />} />
       <Route path="/*" element={<Home />} />
