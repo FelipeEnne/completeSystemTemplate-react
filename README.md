@@ -57,9 +57,15 @@
   * Run test: npm test;
 
 <!-- FUTURE WORK -->
+## Or run Docker
+
+- docker-compose up --build
+
+<!-- FUTURE WORK -->
 ## Future work
 
-* Docker
+* Fix Docker
+* Fix packages
 
 <!-- CONTACT -->
 ## Contact
